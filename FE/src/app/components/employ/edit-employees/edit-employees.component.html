@@ -1,0 +1,91 @@
+<style>
+    .form-text{
+        color: red;
+        display: none;
+    }
+    .notifice {
+        color: rgb(175, 236, 182);
+        background-color: rgb(63, 63, 63);
+        padding: 10px;
+        width: 600px;
+        border-radius: 5px;
+        border: 1px solid #11f368;
+        position: fixed;
+        top: 100px;
+        right: -1000px;
+    }
+    .close-noti:hover{
+        cursor: pointer;
+    }
+</style>
+<div id="id-noti" class="notifice">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+    </svg>
+    Has edited employees !
+    <span class="close-noti" style="float: right;" onclick="closeNoti()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>
+    </span>
+</div>
+<div class="container my-5">
+    <h1 class="mb3" style="display:inline-block ;">Edit Employees</h1>
+    <div class="row">
+        <div class="col-6">
+            <form #form="ngForm" id="form-employee" (ngSubmit)="updateEmployee()">
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="employeeDetails.id" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employeeDetails.name">
+                    <div id="NameHelp" class="form-text">Please enter your name</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="employeeDetails.email">
+                  <div id="emailHelp" class="form-text">Please enter your email</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPhone" class="form-label">Phone</label>
+                  <input type="number" class="form-control" id="phone"  name="phone" [(ngModel)]="employeeDetails.phone">
+                  <div id="PhoneHelp" class="form-text">Please enter your phone</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputSalary" class="form-label">Salary</label>
+                    <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="employeeDetails.salary">
+                    <div id="SalaryHelp" class="form-text">Please enter your salary</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputDepartment" class="form-label">Department</label>
+                    <select class="form-control" id="department" name="department" [(ngModel)]="employeeDetails.department">
+                        <option value="">Choose department</option>
+                        <option value="Intern">Intern</option>
+                        <option value="Fresher">Fresher</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Middle">Middle</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Project Manager">Project Manager</option>
+                        <option value="Teachnical Leader">Teachnical Leader</option>
+                        <option value="QC">QC</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="DepartmentHelp" class="form-text">Please choose your department</div>
+                </div>  
+                <button type="submit" id="btn-sub" hidden></button>
+                <a class="btn btn-primary" onclick="checkInputForm()">Submit</a>
+                <a routerLink="/employs" style="display: inline-block;float: right" title="Back">
+                    <svg style="color:#1ed8ed" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                </a>
+            </form>
+        </div>
+        <div class="col-6" style="text-align: center ;">
+            <img src="https://bravo.interview.leanhduc.pro.vn/assets/images/angular.png" alt="" style="width: 80%;">   
+        </div>
+    </div>
+</div>
